@@ -5,8 +5,8 @@ public class JukeBox {
 
     private ArrayList <Song> playlist = new ArrayList<>();
 
-    public void addSong(Song title) {
-        this.playlist.add(title);
+    public void addSong(Song song) {
+        this.playlist.add(song);
     }
 
     public void play() {
@@ -31,22 +31,28 @@ public class JukeBox {
         playlist.sort((o1, o2) -> o1.getSongTitle().compareTo(o2.getSongTitle()));
 
         // For each song in the sorted playlist, print display the song title
+        String songs = "";
+
         for (Song song : playlist) {
-            JOptionPane.showMessageDialog(null, song.getSongTitle() +"\n");
+            songs = songs + song.getSongTitle() + "\n";
         }
+            JOptionPane.showMessageDialog(null, songs, "Playlist (Alphabetical)", JOptionPane.PLAIN_MESSAGE);
     }
 
     public void reverseSort() {
         // Compare the song title of an object in the list with another to sort the playlist, same as before
         playlist.sort((o1, o2) -> o1.getSongTitle().compareTo(o2.getSongTitle()));
 
-        // Reverse the order
+        // Reverse the order of sorted playlist
         Collections.reverse(playlist);
 
         // For each song in the sorted playlist, print display the song title
+        String songs = "";
+
         for (Song song : playlist) {
-            JOptionPane.showMessageDialog(null, song.getSongTitle() +"\n");
+            songs = songs + song.getSongTitle() + "\n";
         }
+        JOptionPane.showMessageDialog(null, songs, "Playlist (Reverse Alphabetical)", JOptionPane.PLAIN_MESSAGE);
     }
 
     public void addSongs(Collection<Song> playlist) {
